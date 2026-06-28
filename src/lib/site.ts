@@ -27,6 +27,14 @@ export const site = {
   ],
   /** Perfiles sociales para el `sameAs` del JSON-LD. Completar cuando esten. */
   sameAs: [] as string[],
+  /**
+   * Controla si los buscadores pueden indexar el sitio.
+   * Por defecto es `false`: se sirve noindex/nofollow y robots.txt bloquea
+   * todo, asi se puede deployar sin aparecer en buscadores.
+   * Para PUBLICAR: setear la variable de entorno NEXT_PUBLIC_SITE_INDEXABLE=true
+   * (en el hosting) o cambiar esta linea por `indexable: true`.
+   */
+  indexable: process.env.NEXT_PUBLIC_SITE_INDEXABLE === "true",
 } as const;
 
 export type Site = typeof site;
