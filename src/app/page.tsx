@@ -329,38 +329,38 @@ export default function Home() {
         <div className="absolute inset-0">
           <Parallax
             distance={40}
-            className="absolute inset-0 md:bottom-[3%] md:left-[-8%] md:right-1/2 md:top-[3%]"
+            className="absolute inset-0 lg:bottom-[3%] lg:left-[-8%] lg:right-1/2 lg:top-[3%]"
           >
-            {/* Art direction: telefono vertical centrado en movil, composicion horizontal en desktop */}
+            {/* Art direction: telefono vertical centrado en movil/tablet, composicion horizontal en desktop (lg+) */}
             <picture>
-              <source media="(min-width: 768px)" srcSet="/bg-contacto-desktop.webp" />
+              <source media="(min-width: 1024px)" srcSet="/bg-contacto-desktop.webp" />
               <img
                 src="/bg-contacto-mobile.webp"
                 alt=""
                 aria-hidden="true"
                 loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover object-center opacity-90 contrast-115 brightness-105 md:scale-[1.12] md:object-contain md:object-[30%_80%]"
+                className="absolute inset-0 h-full w-full object-cover object-center opacity-90 contrast-115 brightness-105 lg:scale-[1.12] lg:object-contain lg:object-[30%_80%]"
               />
             </picture>
           </Parallax>
           {/* Legibilidad vertical (todas las pantallas): oscuro arriba/abajo, claro en el medio para que se vea el telefono */}
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,1,1,0.9)_0%,rgba(1,1,1,0.4)_18%,rgba(1,1,1,0.04)_40%,rgba(1,1,1,0.04)_64%,rgba(1,1,1,0.55)_100%)]" />
           {/* Oscurecido lateral solo en desktop (texto a la derecha) */}
-          <div className="absolute inset-0 hidden bg-[linear-gradient(90deg,rgba(1,1,1,0)_0%,rgba(1,1,1,0)_60%,rgba(1,1,1,0.4)_78%,rgba(1,1,1,0.85)_92%,rgba(1,1,1,1)_100%)] md:block" />
+          <div className="absolute inset-0 hidden bg-[linear-gradient(90deg,rgba(1,1,1,0)_0%,rgba(1,1,1,0)_60%,rgba(1,1,1,0.4)_78%,rgba(1,1,1,0.85)_92%,rgba(1,1,1,1)_100%)] lg:block" />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,123,250,0.1),transparent_18%,transparent)]" />
         </div>
 
-        <div className="relative z-10 mx-auto grid min-h-[62svh] max-w-[1180px] items-center gap-10 px-4 py-14 md:min-h-[58svh] md:grid-cols-[0.47fr_0.53fr] md:px-6 md:py-16">
-          <div className="hidden md:block md:min-h-[280px]" />
+        <div className="relative z-10 mx-auto grid min-h-[62svh] max-w-[1180px] items-center gap-10 px-4 py-14 md:px-6 md:py-16 lg:min-h-[58svh] lg:grid-cols-[0.47fr_0.53fr]">
+          <div className="hidden lg:block lg:min-h-[280px]" />
 
           <Reveal
             variant="fade-up"
-            className="flex flex-col items-center space-y-5 text-center md:items-end md:pr-0 md:text-right md:justify-self-end"
+            className="flex flex-col items-center space-y-5 text-center lg:items-end lg:pr-0 lg:text-right lg:justify-self-end"
           >
             <p className="text-[11px] uppercase tracking-[0.18em] text-white/78">
               Contacto
             </p>
-            <h2 className="max-w-[16ch] text-[clamp(2rem,8vw,3.3rem)] leading-[1.02] text-white md:max-w-[14ch] md:leading-[1]">
+            <h2 className="max-w-[16ch] text-[clamp(2rem,8vw,3.3rem)] leading-[1.02] text-white lg:max-w-[14ch] lg:leading-[1]">
               <span className="font-display">Hablemos de tu proximo proyecto</span>
             </h2>
             <p className="max-w-[340px] text-base leading-[1.35] text-white/82 md:text-[17px] md:leading-[1.25]">
