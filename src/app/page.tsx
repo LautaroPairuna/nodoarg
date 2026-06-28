@@ -1,6 +1,12 @@
 import Image from "next/image";
 import { Reveal } from "@/components/reveal";
 import { SiteHeader } from "@/components/site-header";
+import {
+  MotionLink,
+  Parallax,
+  StaggerGroup,
+  StaggerItem,
+} from "@/components/motion";
 
 const services = [
   {
@@ -59,15 +65,19 @@ export default function Home() {
     <main className="min-h-screen bg-[var(--color-bg)] text-[var(--color-foreground)]">
       <section className="relative overflow-hidden border-b border-white/10">
         <div className="absolute inset-0">
-          <div className="absolute inset-y-0 left-[26%] right-[-10%] md:left-[32%] md:right-[-14%]">
+          <Parallax
+            distance={50}
+            className="absolute -bottom-[12%] -top-[12%] left-[26%] right-[-10%] md:left-[32%] md:right-[-14%]"
+          >
             <Image
               src="/WEB1.jpg.jpeg"
               alt=""
               fill
-              priority
+              preload
+              sizes="100vw"
               className="scale-x-[-1] object-cover object-center opacity-55 contrast-110 brightness-110"
             />
-          </div>
+          </Parallax>
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,5,7,0.98)_0%,rgba(5,5,7,0.94)_28%,rgba(5,5,7,0.72)_48%,rgba(5,5,7,0.26)_74%,rgba(5,5,7,0.58)_100%)]" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_right,rgba(1,123,250,0.32),transparent_32%)]" />
         </div>
@@ -83,7 +93,7 @@ export default function Home() {
               <Reveal
                 as="p"
                 variant="fade-right"
-                className="mb-6 text-sm font-medium uppercase tracking-[0.16em] text-[var(--color-primary-strong)]"
+                className="mb-6 text-xs font-medium uppercase tracking-[0.16em] text-[var(--color-primary-strong)] sm:text-sm"
               >
                 Conectamos ideas con soluciones
               </Reveal>
@@ -91,7 +101,7 @@ export default function Home() {
                 as="h1"
                 variant="fade-right"
                 delay={90}
-                className="max-w-[17ch] text-5xl leading-[0.92] text-white sm:text-6xl md:text-7xl"
+                className="max-w-[17ch] text-[clamp(2.5rem,8.5vw,4.5rem)] leading-[0.92] text-white"
               >
                 <span className="font-display block">Conectamos ideas</span>
                 <span className="font-display block text-[var(--color-primary)]">
@@ -120,20 +130,20 @@ export default function Home() {
                 variant="fade-up"
                 className="mt-8 flex flex-col gap-3 sm:flex-row"
               >
-                <a
+                <MotionLink
                   href="#contacto"
-                  className="cta-link inline-flex h-10 items-center justify-between gap-4 rounded-sm border border-[var(--color-primary)] bg-[var(--color-primary)] px-4 text-sm font-medium text-white transition-colors hover:bg-[var(--color-primary-strong)]"
+                  className="cta-link inline-flex h-11 w-full items-center justify-between gap-4 rounded-sm border border-[var(--color-primary)] bg-[var(--color-primary)] px-4 text-sm font-medium text-white transition-colors hover:bg-[var(--color-primary-strong)] sm:w-auto"
                 >
                   Solicitar una consulta
                   <ArrowIcon />
-                </a>
-                <a
+                </MotionLink>
+                <MotionLink
                   href="#casos"
-                  className="cta-link inline-flex h-10 items-center justify-between gap-4 rounded-sm border border-white/35 px-4 text-sm font-medium text-white transition-colors hover:border-[var(--color-primary)]"
+                  className="cta-link inline-flex h-11 w-full items-center justify-between gap-4 rounded-sm border border-white/35 px-4 text-sm font-medium text-white transition-colors hover:border-[var(--color-primary)] sm:w-auto"
                 >
                   Ver proyectos
                   <ArrowIcon />
-                </a>
+                </MotionLink>
               </Reveal>
             </div>
           </div>
@@ -143,7 +153,10 @@ export default function Home() {
       <div className="h-3 bg-[var(--color-primary)]" />
 
       <section id="servicios" className="relative overflow-hidden border-b border-white/10">
-        <div className="pointer-events-none absolute -left-14 bottom-10 opacity-95 md:-left-10">
+        <Parallax
+          distance={70}
+          className="pointer-events-none absolute -left-14 bottom-10 opacity-95 md:-left-10"
+        >
           <Image
             src="/patron-circulo.svg"
             alt=""
@@ -151,8 +164,11 @@ export default function Home() {
             height={136}
             className="h-28 w-28 md:h-40 md:w-40"
           />
-        </div>
-        <div className="pointer-events-none absolute -right-10 top-3 opacity-95 md:-right-6">
+        </Parallax>
+        <Parallax
+          distance={-50}
+          className="pointer-events-none absolute -right-10 top-3 opacity-95 md:-right-6"
+        >
           <Image
             src="/patron-circulo.svg"
             alt=""
@@ -160,8 +176,11 @@ export default function Home() {
             height={144}
             className="h-32 w-32 md:h-44 md:w-44"
           />
-        </div>
-        <div className="pointer-events-none absolute -right-12 top-1/2 hidden -translate-y-1/2 opacity-95 md:block">
+        </Parallax>
+        <Parallax
+          distance={60}
+          className="pointer-events-none absolute -right-12 top-1/2 hidden -translate-y-1/2 opacity-95 md:block"
+        >
           <Image
             src="/patron-circulo.svg"
             alt=""
@@ -169,7 +188,7 @@ export default function Home() {
             height={120}
             className="h-24 w-24 md:h-32 md:w-32"
           />
-        </div>
+        </Parallax>
 
         <div className="relative z-10 mx-auto max-w-[1180px] px-4 py-12 md:px-6 md:py-14">
           <div className="space-y-8">
@@ -179,7 +198,7 @@ export default function Home() {
                   servicios
                 </span>
               </div>
-              <p className="max-w-[420px] text-[11px] leading-[1.5] text-white/72 md:text-[13px]">
+              <p className="max-w-[420px] text-[13px] leading-[1.55] text-white/72 md:text-sm">
                 En NODO desarrollamos software a medida para empresas y
                 emprendedores, creando soluciones digitales adaptadas a cada
                 etapa del negocio. Acompanamos el ciclo desde el primer analisis,
@@ -188,14 +207,11 @@ export default function Home() {
               </p>
             </Reveal>
 
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-6">
-              {services.map((service, index) => (
-                <Reveal
-                  as="article"
+            <StaggerGroup className="grid gap-4 md:grid-cols-2 lg:grid-cols-6">
+              {services.map((service) => (
+                <StaggerItem
                   key={service.title}
-                  variant="fade-up"
-                  delay={index * 70}
-                  className={`relative min-h-[215px] rounded-[1.15rem] bg-[linear-gradient(135deg,rgba(255,255,255,0.96)_0%,rgba(255,255,255,0.88)_14%,rgba(57,160,255,0.94)_34%,rgba(1,123,250,0.96)_100%)] p-px shadow-[0_0_18px_rgba(1,123,250,0.16)] ${
+                  className={`relative min-h-[200px] rounded-[1.15rem] bg-[linear-gradient(135deg,rgba(255,255,255,0.96)_0%,rgba(255,255,255,0.88)_14%,rgba(57,160,255,0.94)_34%,rgba(1,123,250,0.96)_100%)] p-px shadow-[0_0_18px_rgba(1,123,250,0.16)] sm:min-h-[215px] ${
                     service.size === "wide"
                       ? "md:col-span-2 lg:col-span-4"
                       : "md:col-span-1 lg:col-span-2"
@@ -203,16 +219,16 @@ export default function Home() {
                 >
                   <div className="relative h-full rounded-[calc(1.15rem-1px)] bg-[linear-gradient(180deg,rgba(7,10,20,0.96),rgba(5,5,7,0.98))] px-5 pb-5 pt-7 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04)]">
                     <div className="absolute left-5 top-5 h-5 w-5 rounded-full border-2 border-white/80" />
-                    <h3 className="mt-16 max-w-[17ch] text-left text-[1.35rem] font-semibold uppercase leading-[1.04] tracking-[0.01em] text-white md:text-[1.6rem]">
+                    <h3 className="mt-14 max-w-[17ch] text-left text-[1.3rem] font-semibold uppercase leading-[1.06] tracking-[0.01em] text-white sm:mt-16 sm:text-[1.35rem] md:text-[1.6rem]">
                       {service.title}
                     </h3>
-                    <p className="mt-4 max-w-[36ch] text-[11px] leading-[1.45] text-white/62 md:text-[12px]">
+                    <p className="mt-4 max-w-[36ch] text-[12.5px] leading-[1.5] text-white/62 md:text-[13px]">
                       {service.description}
                     </p>
                   </div>
-                </Reveal>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerGroup>
           </div>
         </div>
       </section>
@@ -250,11 +266,11 @@ export default function Home() {
             as="article"
             variant="fade-up"
             delay={90}
-            className="relative z-10 mt-8 grid gap-8 rounded-[1.4rem] border border-[var(--color-border)] bg-[rgba(5,5,7,0.92)] p-7 shadow-[0_0_50px_rgba(1,123,250,0.12)] md:grid-cols-[1.2fr_0.8fr]"
+            className="relative z-10 mt-8 grid gap-6 rounded-[1.4rem] border border-[var(--color-border)] bg-[rgba(5,5,7,0.92)] p-5 shadow-[0_0_50px_rgba(1,123,250,0.12)] sm:p-7 md:grid-cols-[1.2fr_0.8fr] md:gap-8"
           >
             <div className="space-y-5">
               <div>
-                <h3 className="text-4xl leading-none text-white">
+                <h3 className="text-3xl leading-none text-white sm:text-4xl">
                   <span className="font-display uppercase">Carrusel</span>
                 </h3>
                 <p className="mt-2 text-base text-white/60">nombre cliente</p>
@@ -270,7 +286,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex min-h-[220px] items-end rounded-[1rem] bg-[linear-gradient(180deg,#1889fb,#017bfa)] p-7 text-white">
+            <div className="flex min-h-[200px] items-end rounded-[1rem] bg-[linear-gradient(180deg,#1889fb,#017bfa)] p-6 text-white sm:min-h-[220px] sm:p-7">
               <div className="w-full">
                 <div className="mb-8 flex justify-center text-white/70">
                   <svg
@@ -300,20 +316,24 @@ export default function Home() {
         className="relative overflow-hidden border-b border-white/10 bg-[#010101] text-white"
       >
         <div className="absolute inset-0">
-          <div className="absolute bottom-[2%] left-[-10%] top-[2%] right-1/2 md:bottom-[3%] md:left-[-8%] md:right-1/2 md:top-[3%]">
+          <Parallax
+            distance={40}
+            className="absolute bottom-0 left-[-10%] right-1/2 top-0 md:bottom-[3%] md:left-[-8%] md:right-1/2 md:top-[3%]"
+          >
             <Image
               src="/WEB2.jpg.jpeg"
               alt=""
               fill
+              sizes="(min-width: 768px) 50vw, 60vw"
               className="scale-[1.12] object-contain object-[30%_80%] opacity-95 contrast-115 brightness-105"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(1,1,1,0)_0%,rgba(1,1,1,0)_66%,rgba(1,1,1,0.32)_82%,rgba(1,1,1,0.82)_94%,rgba(1,1,1,1)_100%),linear-gradient(180deg,rgba(1,1,1,0.96)_0%,rgba(1,1,1,0.1)_18%,rgba(1,1,1,0)_30%,rgba(1,1,1,0)_74%,rgba(1,1,1,0.36)_88%,rgba(1,1,1,0.98)_100%)]" />
-          </div>
+          </Parallax>
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(1,1,1,0)_0%,rgba(1,1,1,0)_60%,rgba(1,1,1,0.4)_78%,rgba(1,1,1,0.85)_92%,rgba(1,1,1,1)_100%),linear-gradient(180deg,rgba(1,1,1,0.96)_0%,rgba(1,1,1,0.1)_18%,rgba(1,1,1,0)_30%,rgba(1,1,1,0)_74%,rgba(1,1,1,0.36)_88%,rgba(1,1,1,0.98)_100%)]" />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,123,250,0.1),transparent_18%,transparent)]" />
         </div>
 
         <div className="relative z-10 mx-auto grid min-h-[58svh] max-w-[1180px] items-center gap-10 px-4 py-12 md:grid-cols-[0.47fr_0.53fr] md:px-6 md:py-16">
-          <div className="min-h-[220px] md:min-h-[280px]" />
+          <div className="hidden md:block md:min-h-[280px]" />
 
           <Reveal
             variant="fade-left"
@@ -322,20 +342,20 @@ export default function Home() {
             <p className="text-right text-[11px] uppercase tracking-[0.18em] text-white/78">
               Contacto
             </p>
-            <h2 className="max-w-[14ch] text-right text-[2.25rem] leading-[1] text-white md:text-[3.3rem]">
+            <h2 className="max-w-[14ch] text-right text-[clamp(2rem,6.5vw,3.3rem)] leading-[1] text-white">
               <span className="font-display">Hablemos de tu proximo proyecto</span>
             </h2>
             <p className="max-w-[360px] text-right text-base leading-[1.25] text-white/82 md:text-[17px]">
               Cada empresa tiene desafios unicos. Nosotros desarrollamos la
               solucion adecuada para resolverlos.
             </p>
-            <a
+            <MotionLink
               href="mailto:hola@nodoarg.com"
-              className="cta-link-left inline-flex h-11 min-w-[310px] items-center justify-center gap-3 rounded-[8px] border border-white/70 px-5 text-sm font-semibold uppercase tracking-[0.08em] text-white transition-colors hover:bg-white hover:text-[var(--color-ink)]"
+              className="cta-link-left inline-flex h-11 w-full items-center justify-center gap-3 rounded-[8px] border border-white/70 px-5 text-sm font-semibold uppercase tracking-[0.08em] text-white transition-colors hover:bg-white hover:text-[var(--color-ink)] sm:w-auto sm:min-w-[310px]"
             >
               <ArrowIcon className="h-5 w-9 scale-x-[-1]" />
               Solicitar asesoramiento
-            </a>
+            </MotionLink>
           </Reveal>
         </div>
       </section>
