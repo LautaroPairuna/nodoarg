@@ -318,34 +318,37 @@ export default function Home() {
         <div className="absolute inset-0">
           <Parallax
             distance={40}
-            className="absolute bottom-0 left-[-10%] right-1/2 top-0 md:bottom-[3%] md:left-[-8%] md:right-1/2 md:top-[3%]"
+            className="absolute bottom-0 left-0 right-0 top-[36%] md:bottom-[3%] md:left-[-8%] md:right-1/2 md:top-[3%]"
           >
             <Image
               src="/WEB2.jpg.jpeg"
               alt=""
               fill
-              sizes="(min-width: 768px) 50vw, 60vw"
-              className="scale-[1.12] object-contain object-[30%_80%] opacity-95 contrast-115 brightness-105"
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="scale-[1.08] object-contain object-bottom opacity-90 contrast-115 brightness-105 md:scale-[1.12] md:object-[30%_80%]"
             />
           </Parallax>
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(1,1,1,0)_0%,rgba(1,1,1,0)_60%,rgba(1,1,1,0.4)_78%,rgba(1,1,1,0.85)_92%,rgba(1,1,1,1)_100%),linear-gradient(180deg,rgba(1,1,1,0.96)_0%,rgba(1,1,1,0.1)_18%,rgba(1,1,1,0)_30%,rgba(1,1,1,0)_74%,rgba(1,1,1,0.36)_88%,rgba(1,1,1,0.98)_100%)]" />
+          {/* Legibilidad vertical (todas las pantallas) */}
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,1,1,0.95)_0%,rgba(1,1,1,0.45)_26%,rgba(1,1,1,0.05)_46%,rgba(1,1,1,0.2)_72%,rgba(1,1,1,0.9)_100%)]" />
+          {/* Oscurecido lateral solo en desktop (texto a la derecha) */}
+          <div className="absolute inset-0 hidden bg-[linear-gradient(90deg,rgba(1,1,1,0)_0%,rgba(1,1,1,0)_60%,rgba(1,1,1,0.4)_78%,rgba(1,1,1,0.85)_92%,rgba(1,1,1,1)_100%)] md:block" />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,123,250,0.1),transparent_18%,transparent)]" />
         </div>
 
-        <div className="relative z-10 mx-auto grid min-h-[58svh] max-w-[1180px] items-center gap-10 px-4 py-12 md:grid-cols-[0.47fr_0.53fr] md:px-6 md:py-16">
+        <div className="relative z-10 mx-auto grid min-h-[62svh] max-w-[1180px] items-center gap-10 px-4 py-14 md:min-h-[58svh] md:grid-cols-[0.47fr_0.53fr] md:px-6 md:py-16">
           <div className="hidden md:block md:min-h-[280px]" />
 
           <Reveal
-            variant="fade-left"
-            className="flex flex-col items-end space-y-5 text-right md:justify-self-end md:pr-0"
+            variant="fade-up"
+            className="flex flex-col items-center space-y-5 text-center md:items-end md:pr-0 md:text-right md:justify-self-end"
           >
-            <p className="text-right text-[11px] uppercase tracking-[0.18em] text-white/78">
+            <p className="text-[11px] uppercase tracking-[0.18em] text-white/78">
               Contacto
             </p>
-            <h2 className="max-w-[14ch] text-right text-[clamp(2rem,6.5vw,3.3rem)] leading-[1] text-white">
+            <h2 className="max-w-[16ch] text-[clamp(2rem,8vw,3.3rem)] leading-[1.02] text-white md:max-w-[14ch] md:leading-[1]">
               <span className="font-display">Hablemos de tu proximo proyecto</span>
             </h2>
-            <p className="max-w-[360px] text-right text-base leading-[1.25] text-white/82 md:text-[17px]">
+            <p className="max-w-[340px] text-base leading-[1.35] text-white/82 md:text-[17px] md:leading-[1.25]">
               Cada empresa tiene desafios unicos. Nosotros desarrollamos la
               solucion adecuada para resolverlos.
             </p>
