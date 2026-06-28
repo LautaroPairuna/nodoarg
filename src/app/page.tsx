@@ -179,7 +179,7 @@ export default function Home() {
         </Parallax>
         <Parallax
           distance={-50}
-          className="pointer-events-none absolute -right-10 top-3 opacity-95 md:-right-6"
+          className="pointer-events-none absolute -right-6 top-3 hidden opacity-95 md:block"
         >
           <Image
             src="/patron-circulo.svg"
