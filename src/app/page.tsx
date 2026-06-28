@@ -211,15 +211,22 @@ export default function Home() {
             </Reveal>
 
             <StaggerGroup className="grid gap-4 md:grid-cols-2 lg:grid-cols-6">
-              {services.map((service) => (
-                <StaggerItem
-                  key={service.title}
-                  className={`relative min-h-[200px] rounded-[1.15rem] bg-[linear-gradient(135deg,rgba(255,255,255,0.96)_0%,rgba(255,255,255,0.88)_14%,rgba(57,160,255,0.94)_34%,rgba(1,123,250,0.96)_100%)] p-px shadow-[0_0_18px_rgba(1,123,250,0.16)] sm:min-h-[215px] ${
-                    service.size === "wide"
-                      ? "md:col-span-2 lg:col-span-4"
-                      : "md:col-span-1 lg:col-span-2"
-                  }`}
-                >
+              {services.map((service, index) => {
+                const isLast = index === services.length - 1;
+                // En md (2 col) todas ocupan 1 col y la ultima cierra la fila a
+                // ancho completo; el span "ancho" solo aplica en lg (6 col).
+                const span =
+                  service.size === "wide"
+                    ? "md:col-span-1 lg:col-span-4"
+                    : isLast
+                      ? "md:col-span-2 lg:col-span-2"
+                      : "md:col-span-1 lg:col-span-2";
+
+                return (
+                  <StaggerItem
+                    key={service.title}
+                    className={`relative min-h-[200px] rounded-[1.15rem] bg-[linear-gradient(135deg,rgba(255,255,255,0.96)_0%,rgba(255,255,255,0.88)_14%,rgba(57,160,255,0.94)_34%,rgba(1,123,250,0.96)_100%)] p-px shadow-[0_0_18px_rgba(1,123,250,0.16)] sm:min-h-[215px] ${span}`}
+                  >
                   <div className="relative h-full rounded-[calc(1.15rem-1px)] bg-[linear-gradient(180deg,rgba(7,10,20,0.96),rgba(5,5,7,0.98))] px-5 pb-5 pt-7 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04)]">
                     <div className="absolute left-5 top-5 h-5 w-5 rounded-full border-2 border-white/80" />
                     <h3 className="mt-14 max-w-[17ch] text-left text-[1.3rem] font-semibold uppercase leading-[1.06] tracking-[0.01em] text-white sm:mt-16 sm:text-[1.35rem] md:text-[1.6rem]">
@@ -230,7 +237,8 @@ export default function Home() {
                     </p>
                   </div>
                 </StaggerItem>
-              ))}
+                );
+              })}
             </StaggerGroup>
           </div>
         </div>
