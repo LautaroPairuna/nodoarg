@@ -69,14 +69,17 @@ export default function Home() {
             distance={50}
             className="absolute -bottom-[12%] -top-[12%] left-[26%] right-[-10%] md:left-[32%] md:right-[-14%]"
           >
-            <Image
-              src="/WEB1.jpg.jpeg"
-              alt=""
-              fill
-              preload
-              sizes="100vw"
-              className="scale-x-[-1] object-cover object-center opacity-55 contrast-110 brightness-110"
-            />
+            {/* Art direction: recorte vertical en movil, horizontal en desktop */}
+            <picture>
+              <source media="(min-width: 768px)" srcSet="/bg-hero-desktop.webp" />
+              <img
+                src="/bg-hero-mobile.webp"
+                alt=""
+                aria-hidden="true"
+                fetchPriority="high"
+                className="absolute inset-0 h-full w-full scale-x-[-1] object-cover object-center opacity-55 contrast-110 brightness-110"
+              />
+            </picture>
           </Parallax>
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,5,7,0.98)_0%,rgba(5,5,7,0.94)_28%,rgba(5,5,7,0.72)_48%,rgba(5,5,7,0.26)_74%,rgba(5,5,7,0.58)_100%)]" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_right,rgba(1,123,250,0.32),transparent_32%)]" />
@@ -318,18 +321,22 @@ export default function Home() {
         <div className="absolute inset-0">
           <Parallax
             distance={40}
-            className="absolute bottom-0 left-0 right-0 top-[36%] md:bottom-[3%] md:left-[-8%] md:right-1/2 md:top-[3%]"
+            className="absolute inset-0 md:bottom-[3%] md:left-[-8%] md:right-1/2 md:top-[3%]"
           >
-            <Image
-              src="/WEB2.jpg.jpeg"
-              alt=""
-              fill
-              sizes="(min-width: 768px) 50vw, 100vw"
-              className="scale-[1.08] object-contain object-bottom opacity-90 contrast-115 brightness-105 md:scale-[1.12] md:object-[30%_80%]"
-            />
+            {/* Art direction: telefono vertical centrado en movil, composicion horizontal en desktop */}
+            <picture>
+              <source media="(min-width: 768px)" srcSet="/bg-contacto-desktop.webp" />
+              <img
+                src="/bg-contacto-mobile.webp"
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover object-center opacity-90 contrast-115 brightness-105 md:scale-[1.12] md:object-contain md:object-[30%_80%]"
+              />
+            </picture>
           </Parallax>
-          {/* Legibilidad vertical (todas las pantallas) */}
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,1,1,0.95)_0%,rgba(1,1,1,0.45)_26%,rgba(1,1,1,0.05)_46%,rgba(1,1,1,0.2)_72%,rgba(1,1,1,0.9)_100%)]" />
+          {/* Legibilidad vertical (todas las pantallas): oscuro arriba/abajo, claro en el medio para que se vea el telefono */}
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,1,1,0.9)_0%,rgba(1,1,1,0.4)_18%,rgba(1,1,1,0.04)_40%,rgba(1,1,1,0.04)_64%,rgba(1,1,1,0.55)_100%)]" />
           {/* Oscurecido lateral solo en desktop (texto a la derecha) */}
           <div className="absolute inset-0 hidden bg-[linear-gradient(90deg,rgba(1,1,1,0)_0%,rgba(1,1,1,0)_60%,rgba(1,1,1,0.4)_78%,rgba(1,1,1,0.85)_92%,rgba(1,1,1,1)_100%)] md:block" />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(1,123,250,0.1),transparent_18%,transparent)]" />
