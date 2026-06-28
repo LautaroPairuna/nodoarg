@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { site } from "@/lib/site";
 
 const bodyFont = localFont({
   src: [
@@ -24,8 +25,61 @@ const displayFont = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "NodoArg",
-  description: "Soluciones digitales con identidad visual azul electrico sobre negro.",
+  metadataBase: new URL(site.url),
+  title: {
+    default: site.title,
+    template: `%s | ${site.name}`,
+  },
+  description: site.description,
+  keywords: [...site.keywords],
+  applicationName: site.name,
+  authors: [{ name: site.legalName, url: site.url }],
+  creator: site.legalName,
+  publisher: site.legalName,
+  category: "technology",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: site.locale,
+    url: site.url,
+    siteName: site.name,
+    title: site.title,
+    description: site.description,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: `${site.name} — ${site.description}`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.title,
+    description: site.description,
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  // Los iconos se auto-inyectan via convenciones de archivo:
+  // app/favicon.ico, app/icon.svg y app/apple-icon.png
+};
+
+export const viewport: Viewport = {
+  themeColor: "#050507",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
@@ -35,7 +89,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="es"
+      lang="es-AR"
       className={`${bodyFont.variable} ${displayFont.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-[var(--color-bg)] text-[var(--color-foreground)]">

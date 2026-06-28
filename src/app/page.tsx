@@ -7,6 +7,7 @@ import {
   StaggerGroup,
   StaggerItem,
 } from "@/components/motion";
+import { buildStructuredData } from "@/lib/structured-data";
 
 const services = [
   {
@@ -61,8 +62,16 @@ function ArrowIcon({ className = "" }: { className?: string }) {
 }
 
 export default function Home() {
+  const structuredData = buildStructuredData(services);
+
   return (
     <main className="min-h-screen bg-[var(--color-bg)] text-[var(--color-foreground)]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+        }}
+      />
       <section className="relative overflow-hidden border-b border-white/10">
         <div className="absolute inset-0">
           <Parallax
